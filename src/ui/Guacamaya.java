@@ -100,32 +100,102 @@ public class Guacamaya {
 
     }
 
+    /**
+     * Permite meterle valores a los arreglos precios y unidades
+     * 
+     * pre: Los arreglos precios y unidades quedan inicializados
+     * post: Los arreglos precios y unidades quedan con valores
+     */
     public static void solicitarDatos(){
 
-     
+        for (int i = 0; i<precios.length; i++){
+            System.out.println("Digite el precio de la referencia " + (i+1) + ":");
+            double precio = reader.nextDouble();
+            precios[i] = precio;
+            
+            System.out.println("Digite la cantidad de productos vendidos de la referencia " + (i+1) + ":");
+            int cantidad = reader.nextInt();
+            unidades[i] = cantidad;
+        }
+
     }
 
+    /**
+     * Permite calcular el total de unidades vendidas en el día
+     * 
+     * pre: El arreglos unidades deben estar inicializado con valores
+     * post: Retorna la cantidad total de unidades venidas en el día
+     * @return - 
+     */
     public static int calcularTotalUnidadesVendidas(){
 
-        return 0;
+        int cantidadTotalUnidades = 0;
+        for (int i = 0; i<unidades.length; i++){
+
+            cantidadTotalUnidades += unidades[i];
+        }
+        return cantidadTotalUnidades;
 
     }
 
+    /**
+     * Permite calcular el precio promedio de las referencias vendidas en el día
+     * 
+     * pre: Los arreglos precios y unidades deben estar inicializados con valores
+     * post: Retorna el precio promedio de las ventas del día
+     * @return - precio promedio de las ventas del día
+     */
     public static double calcularPrecioPromedio(){
 
-        return 0;
+        double precioTotal = 0;
+        for (int i = 0; i<precios.length; i++){
+
+            precioTotal += precios[i];
+        }
+
+        double precioPromedio = precioTotal/precios.length;
+
+        return precioPromedio;
 
     }
 
+    /**
+     * Permite conocer cuanto fue el valor total de ventas en el día
+     * 
+     * pre: Los arreglos precios y unidades deben estar inicializados con valores
+     * post: retorna las ventas totales realizadas en el día
+     * @return - dinero de las ventas totales en el día
+     */
     public static double calcularVentasTotales(){
 
-        return 0;
+        double ventasTotales = 0;
+        for (int i = 0; i<unidades.length; i++){
+            ventasTotales += unidades[i] * precios[i];
+        }
+
+        return ventasTotales;
 
     }
 
+    /**
+     * Permite saber cuantos productos superan el limite digitado por el usuario
+     * 
+     * pre: Los arreglos precios y unidades deben estar inicializados con valores
+     * post: Retorna el valor de cuantos productos superaron el limite
+     * @param limite - un numero double limite>=0
+     * @return - cantidad de productos que superaron el limite
+     */
     public static int consultarReferenciasSobreLimite(double limite){
 
-        return 0;
+        int superaronLimite = 0;
+        for (int i = 0; i<unidades.length; i++ ){
+
+            if (precios[i]*unidades[i] > limite){
+
+                superaronLimite += 1;
+            }
+        }
+        return superaronLimite;
 
     }
 
